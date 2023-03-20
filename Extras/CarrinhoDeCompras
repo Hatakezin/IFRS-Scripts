@@ -1,0 +1,55 @@
+# Este script é um sistema de compras que permite ao usuário escolher itens de uma lista e especificar a quantidade desejada. Ele calcula o valor total da compra e exibe um resumo dos itens comprados no final.
+
+from time import sleep
+itens = {
+    "Calça": 79.99,
+    "Camisa": 89.99,
+    "Tênis": 56.99,
+    "Relógio": 139.99,
+    "Cueca": 14.95,
+    "Pulseira": 7.99
+}
+compras = {}
+item, valor, continua = '', 0, 'Sim'
+print(f'{"-="*20}\nSeja Bem Vindo(a)\nVeja abaixo a lista de itens:\n{"-="*20}')
+for item_nome in itens:
+    print(f'{item_nome} por R$ {itens[item_nome]}')
+print('-='*20)
+while True:
+    if continua == 'Sim':
+        sleep(0.3)
+        item = str(input('Diga qual item deseja comprar:\n')).title()
+        if (item in compras) != True:
+            if (item in itens) == True:
+                while True:
+                    quantidade = int(input('Quantas unidades desse produto deseja comprar?\n'))
+                    if quantidade > 0:
+                        break
+                    else:
+                        print('Diga um valor positivo!!')
+                        sleep(0.5)
+                while True:
+                    sleep(0.2)
+                    confirm = str(input(f'Deseja comprar {quantidade} unidades de {item} por R$ {quantidade*(itens[item]):.2f}? [Sim / Não]\n')).title()
+                    if confirm == 'Sim':
+                        valor += quantidade*(itens[item])
+                        compras[item] = quantidade
+                        break
+                    elif confirm == 'Não':
+                        break
+                while True:
+                    sleep(0.4)
+                    continua = str(input('Deseja comprar mais um item? [Sim / Não]\n')).title()
+                    if continua == 'Sim' or continua == 'Não':
+                        break
+        else:
+            print('Você já comprou esse item!')
+    else:
+        break
+print('-='*20)
+for item_nome in compras:
+    if compras[item_nome] > 1:
+        print(f'{compras[item_nome]} {item_nome}s por R$ {itens[item_nome]*compras[item_nome]:.2f}', end=', ')
+    else:
+        print(f'{compras[item_nome]} {item_nome} por R$ {itens[item_nome]*compras[item_nome]:.2f}', end=', ')
+print(f'\nPagou ao todo: R$ {valor}')
