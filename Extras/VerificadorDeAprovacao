@@ -1,0 +1,9 @@
+# Este script é uma ferramenta útil para calcular a média de três notas inseridas pelo usuário. Ele verifica se a média é maior ou igual a 7 e exibe uma mensagem informando se o usuário foi aprovado ou reprovado. Além disso, ele também exibe a média calculada com uma casa decimal de precisão.
+
+nota = 0
+for x in range(0,3):
+    nota += float(input(f'Diga sua {x+1}ª nota:\n'))
+if (nota/3) >= 7:
+    print(f'Sua média foi: \033[32m{nota/3:.1f}\033[m, você foi \033[42mAPROVADO\033[m')
+else:
+    print(f'Sua média foi: \033[31m{nota/3:.1f}\033[m, você foi \033[41mREPROVADO\033[m')
