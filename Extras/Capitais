@@ -51,3 +51,4 @@ while True:
         break
     else:
         print(f'Você errou, a resposta certa é: {estados_capitais[estado]}')
+        
