@@ -1,0 +1,16 @@
+# Esse script recebe um número inteiro do usuário, encontra todos os múltiplos de 3 ou 5 menores que o número fornecido, calcula a soma desses números e exibe a lista de múltiplos e a soma final na saída.
+
+n = int(input())
+soma = 0
+numeros = []
+for y in range(0, n):
+    if y % 3 == 0 or y % 5 == 0:
+        soma += y
+        numeros.append(y)
+print(f'Saída: {soma} (pois os múltiplos de 3 ou 5 menores que {n} são:', end='')
+for i in numeros:
+    if i == numeros[-1]:
+        print(i, end=';')
+    else:
+        print(i, end=',')
+print(f'e a soma desses números é {soma})')
